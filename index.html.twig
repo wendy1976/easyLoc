@@ -1,42 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ContractController!{% endblock %}
+{% block title %}Hello BillingController!{% endblock %}
 
 {% block body %}
  <div class="container bg-warning">
- <h1 class= text-primary>Formulaire de Contrat</h1>
- {# Pour afficher le formulaire #}
- {{ form_start(contractform) }}
-    <div class="form-group">
-            {{ form_label(contractform.vehicle_uid, 'UID du véhicule', {'label_attr': {'class': 'fw-bold'}}) }}
-            {{ form_widget(contractform.vehicle_uid, {'attr': {'class': 'form-control'}}) }}
-    </div>
-    <div class="form-group">
-            {{ form_label(contractform.customer_uid, 'UID du client', {'label_attr': {'class': 'fw-bold'}}) }}
-            {{ form_widget(contractform.customer_uid, {'attr': {'class': 'form-control'}}) }}
-    </div>
-    <div class="form-group">
-            {{ form_label(contractform.sign_datetime, 'Date de signature', {'label_attr': {'class': 'fw-bold'}}) }}
-            {{ form_widget(contractform.sign_datetime, {'attr': {'class': 'form-control'}}) }}
-    </div>
-    <div class="form-group">
-            {{ form_label(contractform.loc_begin_datetime, 'Date de début de location', {'label_attr': {'class': 'fw-bold'}}) }}
-            {{ form_widget(contractform.loc_begin_datetime, {'attr': {'class': 'form-control'}}) }}
-    </div>       
-    <div class="form-group">
-            {{ form_label(contractform.loc_end_datetime, 'Date de fin de location', {'label_attr': {'class': 'fw-bold'}}) }}
-            {{ form_widget(contractform.loc_end_datetime, {'attr': {'class': 'form-control'}}) }}
-    </div>
-    <div class="form-group">
-            {{ form_label(contractform.returning_datetime, 'Date de rendu du véhicule', {'label_attr': {'class': 'fw-bold'}}) }}
-            {{ form_widget(contractform.returning_datetime, {'attr': {'class': 'form-control'}}) }}
-    </div>
-    <div class="form-group">
-            {{ form_label(contractform.price, 'Prix facturé pour le contrat', {'label_attr': {'class': 'fw-bold'}}) }}
-            {{ form_widget(contractform.price, {'attr': {'class': 'form-control'}}) }}
-    </div>
-       
-        {{ form_end(contractform) }}
-    </div>
+    <h1 class= text-primary>Formulaire de Paiement</h1>
+    {# Pour afficher le formulaire #}
+    {{ form_start(billingform) }}
+        <div class="form-group">
+            {{ form_label(billingform.contract_id, 'Id du contrat concerné par le paiement', {'label_attr': {'class': 'fw-bold'}}) }}
+            {{ form_widget(billingform.contract_id, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(billingform.amount, 'Montant payé', {'label_attr': {'class': 'fw-bold'}}) }}
+            {{ form_widget(billingform.amount, {'attr': {'class': 'form-control'}}) }}
+        </div>
+     {{ form_end(billingform) }}
+</div>
 
 {% endblock %}
