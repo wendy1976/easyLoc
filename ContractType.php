@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
+// Création du formulaire de contrat avec ses champs et les types
 class ContractType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void

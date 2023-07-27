@@ -6,6 +6,8 @@ use App\Repository\ContractRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+
+//Création de l'entité Contract avec ses champs
 #[ORM\Entity(repositoryClass: ContractRepository::class)]
 class Contract
 {

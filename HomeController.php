@@ -4,6 +4,7 @@ nameSpace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
 
+// Création de la page d'accueil, avec une méthode et son retour
 class HomeController {
     public function bonjour() 
     {
