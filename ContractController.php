@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Contract;
 use App\Form\ContractType;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,8 +15,8 @@ use Symfony\Component\Uid\Uuid;
 class ContractController extends AbstractController
 {
     #[Route('/formcontract', name: 'formcontract')]
-    public function index(Request $request)//Request permet de récupérer les données
-
+    public function index(Request $request, ManagerRegistry $doctrine)//Request permet de récupérer les données
+//Manager Registry: pour permettre d'insérer les données du formulaire dans la BDD
     {
         $contract = new Contract(); //instance de l'entité
         //Méthode pour afficher le formulaire, avec une variable $contractform qui stocke le formulaire
@@ -28,8 +29,15 @@ class ContractController extends AbstractController
         //Condition pour vérifier que les données sont valides et pouvoir les insérer dans une BDD
         if($contractform->isSubmitted() && $contractform->isValid())
         {
-            //affiche les informations du formulaire
-            dump($request->request->all());
+            //afficher les informations du formulaire:
+            //dump($request->request->all());
+
+            //Méthodes qui permettent de récupérer les infos du formulaire et de les insérer dans la BDD
+            $entitymanager = $doctrine->getManager();
+            $contrat = $contractform->getData();
+
+            $entitymanager->persist($contrat);
+            $entitymanager->flush();
         }    
 
         return $this->render('contract/index.html.twig', [
