@@ -1,37 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ContractListController!{% endblock %}
+{% block title %}Hello BillingListController!{% endblock %}
 
 {% block body %}
 
-    <h1 class= text-primary>Liste des contrats</h1>
+
+{# Pour afficher la liste des paiements sous forme de tableau #}
+    <h1 class= text-primary>Liste des paiements</h1>
     <table class="table table-striped">
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Vehicle UID</th>
-                <th>Customer UID</th>
-                <th>Sign Datetime</th>
-                <th>Loc Begin Datetime</th>
-                <th>Loc End Datetime</th>
-                <th>Returning Datetime</th>
-                <th>Price</th>
+                <th>Contract ID</th>
+                <th>Amount</th>                
             </tr>
         </thead>
         <tbody>
-            {% for contract in contracts %}
+            {% for billing in billings %}
                 <tr>
-                    <td>{{ contract.getId }}</td>
-                    <td>{{ contract.getVehicleUid }}</td>
-                    <td>{{ contract.getCustomerUid }}</td>
-                    <td>{{ contract.getSignDatetime|date('d-m-Y H:i:s') }}</td>
-                    <td>{{ contract.getLocBeginDatetime|date('d-m-Y H:i:s') }}</td>
-                    <td>{{ contract.getLocEndDatetime|date('d-m-Y H:i:s') }}</td>
-                    <td>{{ contract.getReturningDatetime|date('d-m-Y H:i:s') }}</td>
-                    <td>{{ contract.getPrice }}</td>
+                    <td>{{ billing.getId }}</td>
+                    <td>{{ billing.getContractId }}</td>
+                    <td>{{ billing.getAmount }}</td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
 
 {% endblock %}
+
