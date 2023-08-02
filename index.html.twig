@@ -4,25 +4,34 @@
 
 {% block body %}
 
+    <h1 class= text-primary>Liste des contrats</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Vehicle UID</th>
+                <th>Customer UID</th>
+                <th>Sign Datetime</th>
+                <th>Loc Begin Datetime</th>
+                <th>Loc End Datetime</th>
+                <th>Returning Datetime</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contract in contracts %}
+                <tr>
+                    <td>{{ contract.getId }}</td>
+                    <td>{{ contract.getVehicleUid }}</td>
+                    <td>{{ contract.getCustomerUid }}</td>
+                    <td>{{ contract.getSignDatetime|date('d-m-Y H:i:s') }}</td>
+                    <td>{{ contract.getLocBeginDatetime|date('d-m-Y H:i:s') }}</td>
+                    <td>{{ contract.getLocEndDatetime|date('d-m-Y H:i:s') }}</td>
+                    <td>{{ contract.getReturningDatetime|date('d-m-Y H:i:s') }}</td>
+                    <td>{{ contract.getPrice }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
-    <h1>Liste des contrats</h1>
-    <ul>
-        {% for contract in contracts %}
-            <li>
-                ID : {{ contract.getId }}<br>
-                Vehicle UID : {{ contract.getVehicleUid }}<br>
-                Customer UID : {{ contract.getCustomerUid }}<br>
-                Sign Datetime : {{ contract.getSignDatetime|date('d-m-Y H:i:s') }}<br>
-                Loc Begin Datetime : {{ contract.getLocBeginDatetime|date('d-m-Y H:i:s') }}<br>
-                Loc End Datetime : {{ contract.getLocEndDatetime|date('d-m-Y H:i:s') }}<br>
-                Returning Datetime : {{ contract.getReturningDatetime|date('d-m-Y H:i:s') }}<br>
-                Price : {{ contract.getPrice }}
-            </li>
-            <br>
-        {% endfor %}
-    </ul>
-{% endblock %}    
-
-
-
-
+{% endblock %}
