@@ -4,6 +4,16 @@ controllers:
         namespace: App\Controller
     type: attribute
 
+
 accueil:
   path: /accueil
   controller: App\Controller\HomeController::bonjour
+
+
+contract_list:
+    path: /contracts
+    controller: App\Controller\ContractListController::listContracts  
+
+billing_list:
+    path: /billings
+    controller: App\Controller\BillingListController::listBillings      
